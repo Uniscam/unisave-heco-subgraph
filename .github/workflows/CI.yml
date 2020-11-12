@@ -34,6 +34,6 @@ jobs:
 
       - run: yarn
       - run: yarn codegen
-      - run: yarn deploy -- --access-token $GRAPH_ACCESS_TOKEN
+      - run: yarn deploy
         env:
           GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
