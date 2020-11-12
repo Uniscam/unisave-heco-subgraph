@@ -63,7 +63,14 @@ type Pair @entity {
   token1: Token!
   reserve0: BigDecimal!
   reserve1: BigDecimal!
+  reserveWithDummy0: BigDecimal!
+  reserveWithDummy1: BigDecimal!
   totalSupply: BigDecimal!
+  fee: Int!
+  deposit0: BigDecimal!
+  deposit1: BigDecimal!
+  dummy0: BigDecimal!
+  dummy1: BigDecimal!
 
   # derived liquidity
   reserveETH: BigDecimal!

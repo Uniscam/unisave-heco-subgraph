@@ -61,3 +61,13 @@ templates:
           handler: handleTransfer
         - event: Sync(uint112,uint112)
           handler: handleSync
+        - event: FeeUpdated(uint8)
+          handler: handleFeeUpdated
+        - event: DummyMint(uint256,uint256)
+          handler: handleDummyMint
+        - event: DummyBurn(uint256,uint256)
+          handler: handleDummyBurn
+        - event: Deposited0Updated(uint256)
+          handler: handleDeposited0Updated
+        - event: Deposited1Updated(uint256)
+          handler: handleDeposited1Updated
