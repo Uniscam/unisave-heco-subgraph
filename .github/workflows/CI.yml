@@ -7,10 +7,10 @@ on:
   pull_request:
 
 jobs:
-  test:
+  deploy:
     strategy:
       matrix:
-        node: ['10.x', '12.x']
+        node: ['12.x']
         os: [ubuntu-latest]
 
     runs-on: ${{ matrix.os }}
@@ -33,6 +33,8 @@ jobs:
             ${{ matrix.os }}-yarn-
 
       - run: yarn
-
       - run: yarn codegen
-      - run: yarn build
+      - run: npx graph auth https://api.thegraph.com/deploy/ $GRAPH_ACCESS_TOKEN
+        env:
+          GRAPH_ACCESS_TOKEN: ${{ secrets.GRAPH_ACCESS_TOKEN }}
+      - run: yarn deploy
