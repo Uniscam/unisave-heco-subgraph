@@ -606,12 +606,12 @@ export function handleDeposited1Updated(event: Deposited1Updated): void {
 
 export function handleY0Updated(event: Y0Updated): void {
   let pair = Pair.load(event.address.toHex())
-  pair.yToken0 = event.params.token.toHex()
+  pair.yToken0 = event.params.token.toHexString()
   pair.save()
 }
 export function handleY1Updated(event: Y0Updated): void {
   let pair = Pair.load(event.address.toHex())
-  pair.yToken1 = event.params.token.toHex()
+  pair.yToken1 = event.params.token.toHexString()
   pair.save()
 }
 
