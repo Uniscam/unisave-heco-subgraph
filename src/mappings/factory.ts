@@ -109,8 +109,8 @@ export function handleNewPair(event: PairCreated): void {
   pair.fee = 3
   pair.deposit0 = ZERO_BD
   pair.deposit1 = ZERO_BD
-  pair.redepositRatio0 = ZERO_BD
-  pair.redepositRatio1 = ZERO_BD
+  pair.redepositRatio0 = 0
+  pair.redepositRatio1 = 0
   pair.dummy0 = ZERO_BD
   pair.dummy1 = ZERO_BD
 
