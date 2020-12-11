@@ -14,7 +14,7 @@ import {
   Swap as SwapEvent,
   Bundle
 } from '../types/schema'
-import { Pair as PairContract, Mint, Burn, Swap, Transfer, Sync, DummyMint, FeeUpdated, Deposited0Updated, Deposited1Updated } from '../types/templates/Pair/Pair'
+import { Pair as PairContract, Mint, Burn, Swap, Transfer, Sync, DummyMint, FeeUpdated, Deposited0Updated, Deposited1Updated, Y0Updated, RedepositRatio0Updated, RedepositRatio1Updated } from '../types/templates/Pair/Pair'
 import { updatePairDayData, updateTokenDayData, updateUniswapDayData, updatePairHourData } from './dayUpdates'
 import { getBnbPriceInUSD, findEthPerToken, getTrackedVolumeUSD, getTrackedLiquidityUSD } from './pricing'
 import {
@@ -601,5 +601,27 @@ export function handleDeposited1Updated(event: Deposited1Updated): void {
 
   pair.deposit1 = convertTokenToDecimal(event.params.deposited, token1.decimals)
 
+  pair.save()
+}
+
+export function handleY0Updated(event: Y0Updated): void {
+  let pair = Pair.load(event.address.toHex())
+  pair.yToken0 = event.params.token.toHex()
+  pair.save()
+}
+export function handleY1Updated(event: Y0Updated): void {
+  let pair = Pair.load(event.address.toHex())
+  pair.yToken1 = event.params.token.toHex()
+  pair.save()
+}
+
+export function handleRedepositRatio0Updated(event: RedepositRatio0Updated): void {
+  let pair = Pair.load(event.address.toHex())
+  pair.redepositRatio0 = event.params.ratio
+  pair.save()
+}
+export function handleRedepositRatio1Updated(event: RedepositRatio1Updated): void {
+  let pair = Pair.load(event.address.toHex())
+  pair.redepositRatio1 = event.params.ratio
   pair.save()
 }
