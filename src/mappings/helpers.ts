@@ -3,6 +3,7 @@ import { log, BigInt, BigDecimal, Address, EthereumEvent } from '@graphprotocol/
 import { ERC20 } from '../types/Factory/ERC20'
 import { ERC20SymbolBytes } from '../types/Factory/ERC20SymbolBytes'
 import { ERC20NameBytes } from '../types/Factory/ERC20NameBytes'
+import { ERC20DecimalsUInt8 } from '../types/Factory/ERC20DecimalsUInt8'
 import { User, Bundle, Token, LiquidityPosition, LiquidityPositionSnapshot, Pair } from '../types/schema'
 import { Factory as FactoryContract } from '../types/templates/Pair/Factory'
 
@@ -130,11 +131,18 @@ export function fetchTokenDecimals(tokenAddress: Address): BigInt {
   }
 
   let contract = ERC20.bind(tokenAddress)
+  let contractDecimalsUInt8 = ERC20DecimalsUInt8.bind(tokenAddress)
+
   // try types uint8 for decimals
   let decimalValue = null
   let decimalResult = contract.try_decimals()
   if (!decimalResult.reverted) {
     decimalValue = decimalResult.value
+  } else {
+    let decimalsUInt8 = contractDecimalsUInt8.try_decimals()
+    if (!decimalsUInt8.reverted) {
+      decimalValue = decimalsUInt8.value
+    }
   }
   return BigInt.fromI32(decimalValue as i32)
 }
