@@ -71,8 +71,8 @@ type Pair @entity {
   fee: Int!
   deposit0: BigDecimal!
   deposit1: BigDecimal!
-  redepositRatio0: BigDecimal!
-  redepositRatio1: BigDecimal!
+  redepositRatio0: Int!
+  redepositRatio1: Int!
   dummy0: BigDecimal!
   dummy1: BigDecimal!
 
