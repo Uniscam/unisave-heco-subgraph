@@ -61,8 +61,8 @@ type Pair @entity {
   # mirrored from the smart contract
   token0: Token!
   token1: Token!
-  yToken0: Token!
-  yToken1: Token!
+  yToken0: Token
+  yToken1: Token
   reserve0: BigDecimal!
   reserve1: BigDecimal!
   reserveWithDummy0: BigDecimal!
