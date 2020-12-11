@@ -10,7 +10,8 @@ import {
   fetchTokenSymbol,
   fetchTokenName,
   fetchTokenDecimals,
-  fetchTokenTotalSupply
+  fetchTokenTotalSupply,
+  ADDRESS_ZERO
 } from './helpers'
 
 export function handleNewPair(event: PairCreated): void {
@@ -86,8 +87,8 @@ export function handleNewPair(event: PairCreated): void {
   let pair = new Pair(event.params.pair.toHexString()) as Pair
   pair.token0 = token0.id
   pair.token1 = token1.id
-  pair.yToken0 = null
-  pair.yToken1 = null
+  pair.yToken0 = ADDRESS_ZERO
+  pair.yToken1 = ADDRESS_ZERO
   pair.liquidityProviderCount = ZERO_BI
   pair.createdAtTimestamp = event.block.timestamp
   pair.createdAtBlockNumber = event.block.number
