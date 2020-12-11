@@ -629,13 +629,13 @@ function saveYToken(address: Address): void {
   yToken = new YToken(address.toHex())
   yToken.symbol = fetchTokenSymbol(address)
   yToken.name = fetchTokenName(address)
-  let decimals = fetchTokenDecimals(address)
+  // let decimals = fetchTokenDecimals(address)
 
-  // bail if we couldn't figure out the decimals
-  if (decimals === null) {
-    return
-  }
-  yToken.decimals = decimals
+  // // bail if we couldn't figure out the decimals
+  // if (decimals === null) {
+  //   return
+  // }
+  // yToken.decimals = decimals
   yToken.save()
 }
 

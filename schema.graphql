@@ -57,7 +57,7 @@ type YToken @entity {
   id: ID!
   symbol: String!
   name: String!
-  decimals: BigInt!
+  # decimals: BigInt!
 }
 
 type Pair @entity {
