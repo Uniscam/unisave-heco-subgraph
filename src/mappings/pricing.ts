@@ -5,7 +5,7 @@ import { ZERO_BD, factoryContract, ADDRESS_ZERO, ONE_BD } from './helpers'
 
 const WETH_ADDRESS = '0x5545153ccfca01fbd7dd11c0b23ba694d9509a6f'
 // New Stablecoin pair needed!
-const WHT_HUSD_PAIR = '0x8a594f8659850f9cd2210d0bf3e4f7827561207c' // created block 1587531
+const WHT_HUSD_PAIR = '0x8add929f7942c5781756d089592037e9788fdf51' // created block 1587531
 
 export function getBnbPriceInUSD(): BigDecimal {
   // fetch eth prices for each stablecoin
